@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Route;
 // Public routes (no auth required)
 Route::view('/','home')->name('home');
 Route::get('/project',[ProjectController::class, 'index'])->name('projects.index');
-Route::get('/project/{id}', [ProjectController::class, 'show'])->name('projects.show');
-Route::get('/team', [EmployeeController::class, 'index'])->name('team');
-Route::get('/clients', [ClientController::class, 'index'])->name('clients');
-Route::view('/contact', 'contact')->name('contact');
+Route::get('/project/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
+<<<<<<< Updated upstream
 // Admin Routes (protected with auth middleware)
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -47,4 +48,22 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 });
 
 // Breeze auth routes are auto-included from routes/auth.php
+=======
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
+
+    \App\Models\Inquiry::create($validated);
+
+    return back()->with('success', 'Thank you! Your message has been sent successfully. We will get back to you shortly.');
+});
+
+
+
+
+>>>>>>> Stashed changes
 require __DIR__.'/auth.php';

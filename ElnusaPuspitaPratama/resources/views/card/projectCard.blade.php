@@ -1,49 +1,49 @@
-<div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up">
-    <div class="p-4 rounded-3 shadow-lg d-flex flex-column h-100 overflow-hidden project-card">
-        <div class="position-relative overflow-hidden mb-3">
-            <img src="{{ asset($project->image_url) }}"
-                class="rounded-3 shadow project-img w-100"
-                height="220">
-            <div class="position-absolute top-0 start-0 m-3">
-                <span class="badge {{ $project->badgeColor }} px-3 py-2">
-                    {{ ucfirst($project->status) }}
-                </span>
+<div class="group relative flex flex-col h-full overflow-hidden rounded-[2rem] bg-white border border-slate-200 hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500" data-aos="fade-up">
+    {{-- Image Container --}}
+    <div class="relative h-64 overflow-hidden">
+        <img src="{{ $project->display_image }}" 
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+             alt="{{ $project->project_name }}">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+        <div class="absolute top-4 left-4">
+            <span class="rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md 
+                @if($project->status === 'completed') bg-emerald-500/80 text-white @else bg-amber-500/80 text-white @endif">
+                {{ $project->status }}
+            </span>
+        </div>
+    </div>
+
+    {{-- Content --}}
+    <div class="flex flex-col flex-grow p-8 bg-white">
+        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">
+            {{ $project->project_name }}
+        </h3>
+        <p class="text-slate-500 text-sm mb-6 line-clamp-2">
+            {{ $project->description }}
+        </p>
+
+        <div class="space-y-4 mb-8">
+            <div class="flex items-center text-sm text-slate-600">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center mr-3">
+                    <i class="bi bi-geo-alt-fill text-slate-400"></i>
+                </div>
+                {{ $project->address }}
+            </div>
+            <div class="flex items-center text-sm text-slate-600">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center mr-3">
+                    <i class="bi bi-building text-slate-400"></i>
+                </div>
+                {{ $project->client->nama }}
             </div>
         </div>
-        <div class="flex-grow-1 d-flex flex-column justify-content-between">
-            <div>
-                <h5 class="fw-bold mb-2 text-white">{{ $project->project_name }}</h5>
-                <p class="text-white text-opacity-85 small mb-3">
-                    {{ \Illuminate\Support\Str::limit($project->description, 100) }}
-                </p>
-                <div class="mb-3">
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center me-2 bg-warning bg-opacity-10" style="width:32px;height:32px;">
-                            <i class="bi bi-geo-alt-fill text-white small"></i>
-                        </div>
-                        <small class="text-white text-opacity-85">{{ $project->address }}</small>
-                    </div>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center me-2 bg-warning bg-opacity-10" style="width:32px;height:32px;">
-                            <i class="bi bi-building text-white small"></i>
-                        </div>
-                        <small class="text-white text-opacity-85">{{ $project->client->nama }}</small>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center me-2 bg-warning bg-opacity-10" style="width:32px;height:32px;">
-                            <i class="bi bi-cash-stack text-white small"></i>
-                        </div>
-                        <small class="text-success fw-semibold">
-                            Rp {{ number_format($project->budget / 1000000, 0) }} Juta
-                        </small>
-                    </div>
-                </div>
+
+        <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+            <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">
+                Budget <span class="text-slate-900 ml-1">Rp {{ number_format($project->budget / 1000000, 0) }}M</span>
             </div>
-            <div class="mt-auto pt-2">
-                <a href="/project/{{ $project->id }}" class="btn btn-outline-warning w-100 py-2">
-                    View Details <i class="bi bi-arrow-right ms-2"></i>
-                </a>
-            </div>
+            <a href="/project/{{ Str::slug($project->project_name) }}" class="text-emerald-500 hover:text-emerald-600 transition-all">
+                <i class="bi bi-arrow-right-circle-fill text-3xl"></i>
+            </a>
         </div>
     </div>
 </div>

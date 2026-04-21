@@ -52,9 +52,14 @@ class ProjectController extends Controller
     }
 
     
-    public function show($id)
+    public function show($slug)
     {
-        $project = Project::with(['client', 'projectManager'])->findOrFail($id);
+        $searchTerm = str_replace('-', ' ', $slug);
+        
+        $project = Project::with(['client', 'projectManager'])
+            ->where('project_name', 'LIKE', $searchTerm)
+            ->orWhere('id', $slug)
+            ->firstOrFail();
 
         $status = strtolower($project->status);
         if ($status === 'planning') {

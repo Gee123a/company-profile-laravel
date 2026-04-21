@@ -1,51 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 fixed-top border-bottom border-white border-opacity-10"
-    id="mainNav" style="backdrop-filter: blur(10px);">
-    <div class="container">
-        
-        <a class="navbar-brand fw-bold fs-4" href="/" style="letter-spacing: 1px;">
-            <span class="text-warning">ELNUSA</span> Puspita Pratama
-        </a>
+<nav x-data="{ mobileMenuOpen: false }" 
+     class="fixed top-0 z-50 w-full border-b border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300"
+     id="mainNav">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+            {{-- Logo --}}
+            <div class="flex-shrink-0">
+                <a href="/" class="group flex items-center space-x-2">
+                    <span class="text-2xl font-bold tracking-tight text-white">
+                        <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">ELNUSA</span>
+                        <span class="font-light">Puspita Pratama</span>
+                    </span>
+                </a>
+            </div>
 
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            {{-- Desktop Navigation --}}
+            <div class="hidden md:block">
+                <div class="flex items-baseline space-x-1">
+                    @foreach([
+                        '/' => 'Home',
+                        '/project' => 'Projects',
+                        '/contact' => 'Contact Us',
+                    ] as $url => $label)
+                        <a href="{{ $url }}" 
+                           class="rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 
+                           {{ Request::is($url === '/' ? '/' : trim($url, '/').'*') 
+                              ? 'bg-emerald-500/10 text-emerald-400 shadow-[inset_0_0_12px_rgba(16,185,129,0.1)]' 
+                              : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                            {{ $label }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
 
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item mx-3">
-                    <a class="nav-link fw-medium {{ Request::is('/') ? 'active text-warning' : 'text-white-50' }}"
-                        href="/">
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fw-medium {{ Request::is('project*') ? 'active text-warning' : 'text-white-50' }}"
-                        href="/project">
-                        Projects
-                    </a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fw-medium {{ Request::is('team') ? 'active text-warning' : 'text-white-50' }}"
-                        href="/team">
-                        Our Team
-                    </a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fw-medium {{ Request::is('clients') ? 'active text-warning' : 'text-white-50' }}"
-                        href="/clients">
-                        Our Clients
-                    </a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fw-medium {{ Request::is('contact') ? 'active text-warning' : 'text-white-50' }}"
-                        href="/contact">
-                        Contact Us
-                    </a>
-                </li>
-            </ul>
+            {{-- Mobile menu button --}}
+            <div class="flex md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="inline-flex items-center justify-center rounded-lg p-2 text-slate-400 hover:bg-white/5 hover:text-white focus:outline-none">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="bi" :class="mobileMenuOpen ? 'bi-x-lg' : 'bi-list'" style="font-size: 1.5rem;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {{-- Mobile menu --}}
+    <div x-show="mobileMenuOpen" 
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         class="md:hidden border-t border-white/10 bg-slate-900/95 backdrop-blur-xl">
+        <div class="space-y-1 px-4 py-6">
+            @foreach([
+                '/' => 'Home',
+                '/project' => 'Projects',
+                '/contact' => 'Contact Us',
+            ] as $url => $label)
+                <a href="{{ $url }}" 
+                   class="block rounded-lg px-4 py-3 text-base font-medium transition-colors
+                   {{ Request::is($url === '/' ? '/' : trim($url, '/').'*') 
+                      ? 'bg-emerald-500/10 text-emerald-400' 
+                      : 'text-slate-300 hover:bg-white/5 hover:text-white' }}">
+                    {{ $label }}
+                </a>
+            @endforeach
         </div>
     </div>
 </nav>

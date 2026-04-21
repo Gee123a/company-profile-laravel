@@ -1,167 +1,114 @@
 @extends('layout.main')
-@section('title', 'Contact Us')
+@section('title', 'Contact Us - ')
 @section('content')
 
-    {{-- Hero Section: Menampilkan judul, deskripsi, dan statistik kontak di bagian atas halaman --}}
-    @include('layout.heroSection', [
-        'title' => 'Get In Touch',
-        'description' =>
-            "Let's discuss your next project. We're here to help bring your vision to life with professional construction services.",
-        'background' => 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920',
-        'statistic' => [
-            'main' => '24/7',
-            'label' => 'Customer Support',
-            'items' => [
-                ['value' => 'Fast', 'label' => 'Response Time'],
-                ['value' => '100%', 'label' => 'Satisfaction'],
-            ],
-        ],
-        'scrollTo' => '#contact-form',
-    ])
-
-    
-    <section id="contact-form" class="py-5 position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100"
-            style="background: linear-gradient(rgba(30,20,15,0.85), rgba(30,20,15,0.85)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1920') center/cover no-repeat; z-index: -1;">
+    {{-- Sub-Hero --}}
+    <section class="pt-32 pb-20 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920" class="w-full h-full object-cover" alt="Contact Header">
         </div>
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    
-                    @include('layout.sectionTitle', ['title' => 'CONTACT US'])
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20 mb-6 uppercase tracking-wider">
+                Get In Touch
+            </span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Let's Build Together</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto font-light">
+                We're here to help bring your vision to life with professional engineering and construction services.
+            </p>
+        </div>
+    </section>
+
+    {{-- Contact Section --}}
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                {{-- Form Column --}}
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8">Send us a Message</h2>
+                    @if(session('success'))
+                        <div class="mb-8 p-6 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-start" data-aos="fade-down">
+                            <i class="bi bi-check-circle-fill text-emerald-500 text-xl mr-4 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-emerald-900 mb-1">Message Sent!</h4>
+                                <p class="text-emerald-700">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('contact') }}" method="POST" class="space-y-6">
+                        @csrf
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Full Name</label>
+                                <input type="text" name="name" required class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address</label>
+                                <input type="email" name="email" required class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Subject</label>
+                            <select name="subject" required class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all">
+                                <option>New Project Inquiry</option>
+                                <option>General Consultation</option>
+                                <option>Request Quote</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Your Message</label>
+                            <textarea name="message" required rows="6" class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-500 text-slate-950 font-bold py-5 rounded-2xl hover:bg-emerald-400 transition-all shadow-xl shadow-emerald-500/20">
+                            SEND MESSAGE
+                        </button>
+                    </form>
                 </div>
-            </div>
-            <div class="row align-items-start g-4">
-                <div class="col-lg-7 mb-4 d-flex flex-column" data-aos="fade-right" data-aos-delay="300">
-                    
-                    <div class="p-4 p-lg-5 rounded-3 shadow-lg border border-warning border-opacity-25 flex-grow-1 d-flex flex-column justify-content-between"
-                        style="background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); min-height: 520px;">
-                        <div>
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-warning bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                    style="width:56px;height:56px;">
-                                    <i class="bi bi-envelope-fill fs-3 text-white"></i>
-                                </div>
-                                <h3 class="fw-bold mb-0 text-white">Send Us a Message</h3>
-                            </div>
-                            <form class="h-100 d-flex flex-column">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold text-white">Full Name *</label>
-                                        <input type="text"
-                                            class="form-control border-warning border-opacity-50 bg-dark text-white"
-                                            placeholder="John Doe" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold text-white">Email *</label>
-                                        <input type="email"
-                                            class="form-control border-warning border-opacity-50 bg-dark text-white"
-                                            placeholder="john@example.com" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold text-white">Phone Number *</label>
-                                        <input type="tel"
-                                            class="form-control border-warning border-opacity-50 bg-dark text-white"
-                                            placeholder="+62 812 3456 7890" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-semibold text-white">Subject *</label>
-                                        <select class="form-select border-warning border-opacity-50 bg-dark text-white"
-                                            required>
-                                            <option value="">Select Subject</option>
-                                            <option>New Project Inquiry</option>
-                                            <option>Request Quote</option>
-                                            <option>General Question</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 flex-grow-1 d-flex flex-column">
-                                        <label class="form-label fw-semibold text-white">Message *</label>
-                                        <textarea class="form-control border-warning border-opacity-50 bg-dark text-white flex-grow-1"
-                                            style="height:185px; min-height:185px; max-height:185px; resize:none;" rows="12"
-                                            placeholder="Tell us about your project..." required></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-warning btn-lg px-5 py-3 w-100 mt-2">
-                                            <i class="bi bi-send-fill me-2"></i>Send Message
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5" data-aos="fade-left" data-aos-delay="300">
-                    
-                    <div class="p-4 rounded-3 shadow-lg border border-warning border-opacity-25 mb-4"
-                        style="background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25);">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="bg-warning bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                style="width:56px;height:56px;">
-                                <i class="bi bi-building fs-3 text-white"></i>
-                            </div>
-                            <h2 class="fw-bold mb-0 text-white fs-4">Head Office</h2>
-                        </div>
-                        <div>
-                            <p class="text-white text-opacity-85 mb-2">
-                                <strong>Elnusa Puspita Pratama</strong><br>
-                                Jalan Manyar Kertoadi no 93
-                            </p>
-                        </div>
-                        <hr class="my-3 border-warning border-opacity-25">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="bg-warning bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                style="width:56px;height:56px;">
-                                <i class="bi bi-clock fs-3 text-white"></i>
-                            </div>
-                            <h2 class="fw-bold mb-0 text-white fs-4">Operating Hours</h2>
-                        </div>
-                        <div>
-                            <p class="text-white text-opacity-85 small mb-0">
-                                Mon-Sat: 08:00 - 17:00<br>
-                                Sun: Closed
-                            </p>
-                        </div>
-                    </div>
-                    <div class="p-4 rounded-3 shadow-lg border border-warning border-opacity-25 mb-4"
-                        style="background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25);">
-                        <h5 class="fw-bold mb-4 text-white">
-                            <i class="bi bi-telephone-fill text-white me-2"></i>Contact Methods
-                        </h5>
-                        <div class="d-flex align-items-center mb-3 pb-3 border-bottom border-warning border-opacity-25">
-                            <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                style="width:32px;height:32px;">
-                                <i class="bi bi-telephone-fill text-white fs-5"></i>
+
+                {{-- Info Column --}}
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8">Contact Information</h2>
+                    <div class="space-y-8">
+                        {{-- Office --}}
+                        <div class="flex items-start p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mr-6">
+                                <i class="bi bi-geo-alt-fill text-emerald-600 text-xl"></i>
                             </div>
                             <div>
-                                <small class="text-white text-opacity-85 d-block">Phone</small>
-                                <a href="tel:+622187654321" class="text-white text-decoration-none fw-semibold">
-                                    +62 88 1181 2904
-                                </a>
+                                <h4 class="text-lg font-bold text-slate-900 mb-1">Head Office</h4>
+                                <p class="text-slate-500 leading-relaxed">
+                                    Jalan Manyar Kertoadi no 93<br>Surabaya, East Java, Indonesia
+                                </p>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center mb-3 pb-3 border-bottom border-warning border-opacity-25">
-                            <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                style="width:32px;height:32px;">
-                                <i class="bi bi-whatsapp text-white fs-5"></i>
+
+                        {{-- Connectivity --}}
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="p-8 rounded-3xl bg-emerald-50 border border-emerald-100">
+                                <i class="bi bi-telephone-fill text-2xl text-emerald-600 mb-4 block"></i>
+                                <h4 class="font-bold text-slate-900 mb-1">Call Us</h4>
+                                <a href="tel:+628811812904" class="text-emerald-600 font-semibold hover:underline">+62 88 1181 2904</a>
                             </div>
-                            <div>
-                                <small class="text-white text-opacity-85 d-block">WhatsApp</small>
-                                <a href="https://wa.me/6281234567890" target="_blank"
-                                    class="text-white text-decoration-none fw-semibold">
-                                    +62 88 1181 2904
-                                </a>
+                            <div class="p-8 rounded-3xl bg-indigo-50 border border-indigo-100">
+                                <i class="bi bi-envelope-fill text-2xl text-indigo-600 mb-4 block"></i>
+                                <h4 class="font-bold text-slate-900 mb-1">Email Us</h4>
+                                <a href="mailto:hrd.elnusaapp@gmail.com" class="text-indigo-600 font-semibold hover:underline">hrd.elnusaapp@gmail.com</a>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
-                                style="width:32px;height:32px;">
-                                <i class="bi bi-envelope-fill text-white fs-5"></i>
+
+                        {{-- Hours --}}
+                        <div class="p-8 rounded-3xl bg-slate-900 text-white">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <i class="bi bi-clock-history text-emerald-400"></i>
+                                <h4 class="font-bold uppercase tracking-widest text-xs">Operating Hours</h4>
                             </div>
-                            <div>
-                                <small class="text-white text-opacity-85 d-block">Email</small>
-                                <a href="mailto:contact@elnusapp.co.id" class="text-white text-decoration-none fw-semibold">
-                                    hrd.elnusaapp@gmail.com
-                                </a>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Monday - Friday</span>
+                                <span>08:00 AM - 05:00 PM</span>
+                            </div>
+                            <div class="flex justify-between text-sm mt-2">
+                                <span class="text-slate-400">Saturday</span>
+                                <span>08:00 AM - 12:00 PM</span>
                             </div>
                         </div>
                     </div>
@@ -170,30 +117,12 @@
         </div>
     </section>
 
-    
-    <section class="py-5 position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100"
-            style="background: linear-gradient(rgba(30,20,15,0.85), rgba(30,20,15,0.85)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?w=1920') center/cover no-repeat; z-index: -1;">
-        </div>
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    
-                    @include('layout.sectionTitle', ['title' => 'OUR LOCATION'])
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="rounded-3 overflow-hidden shadow-lg border border-warning border-opacity-25"
-                        style="background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25);">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d455.2231510277365!2d112.77185038652816!3d-7.280052460523613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa3129c99a4f%3A0x6d089073fc6ac2b6!2sJl.%20Manyar%20Kertoarjo%20No.93%2C%20RT.007%2FRW.11%2C%20Mojo%2C%20Kec.%20Gubeng%2C%20Surabaya%2C%20Jawa%20Timur%2060285!5e0!3m2!1sen!2sid!4v1760275044969!5m2!1sen!2sid"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
+    {{-- Map Section --}}
+    <section class="h-[500px] w-full relative">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d455.2231510277365!2d112.77185038652816!3d-7.280052460523613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa3129c99a4f%3A0x6d089073fc6ac2b6!2sJl.%20Manyar%20Kertoarjo%20No.93%2C%20RT.007%2FRW.11%2C%20Mojo%2C%20Kec.%20Gubeng%2C%20Surabaya%2C%20Jawa%20Timur%2060285!5e0!3m2!1sen!2sid!4v1760275044969!5m2!1sen!2sid"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
     </section>
 
 @endsection
