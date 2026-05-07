@@ -51,6 +51,16 @@ class ProjectController extends Controller
         return view('project', compact('allProjects', 'featuredProjects'));
     }
 
+    public function featured()
+    {
+        $featuredProjects = Project::with('client', 'projectManager')
+            ->orderBy('budget', 'desc')
+            ->take(6)
+            ->get();
+
+        return view('featured', compact('featuredProjects'));
+    }
+
     
     public function show($slug)
     {
