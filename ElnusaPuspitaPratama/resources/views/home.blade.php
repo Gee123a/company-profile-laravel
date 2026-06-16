@@ -1,119 +1,114 @@
 @extends('layout.main')
-@section('title', 'Home')
+@section('title', 'Home - ')
 @section('content')
 
-    
-    <section id="hero" class="position-relative vh-100 d-flex align-items-center overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100"
-        data-aos="fade"
-        data-aos-delay="50"
-        data-aos-duration="300"
-        style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920') center/cover no-repeat; z-index: -1;">
-    </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 text-white d-flex flex-column justify-content-center">
-                    <h1 class="display-3 fw-bold mb-4" data-aos="fade-right" data-aos-delay="200">
-                        General Contractor & Construction Services
+    {{-- Hero Section --}}
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+        {{-- Background Image --}}
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-slate-950/60 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920" 
+                 class="w-full h-full object-cover" 
+                 alt="Construction Site">
+        </div>
+
+        {{-- Content --}}
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20 mb-6 uppercase tracking-wider">
+                        ESTABLISHED 2018
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-8">
+                        Building the <span class="text-emerald-500">Future</span> with Precision
                     </h1>
-                    <p class="lead mb-4" data-aos="fade-right" data-aos-delay="400">
-                        Kami membangun masa depan dengan inovasi, kualitas, dan kepercayaan.
+                    <p class="text-xl text-slate-300 mb-10 max-w-xl">
+                        General Contractor & Engineering Services focused on high-quality delivery, 
+                        technical excellence, and unwavering trust.
                     </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#about" class="rounded-full bg-emerald-500 px-8 py-4 text-sm font-bold text-slate-950 hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20">
+                            START A PROJECT
+                        </a>
+                        <a href="/project" class="rounded-full bg-white/10 px-8 py-4 text-sm font-bold text-white hover:bg-white/20 transition-all backdrop-blur-md">
+                            VIEW PORTFOLIO
+                        </a>
+                    </div>
                 </div>
-                <div class="col-lg-6 text-white text-lg-end d-flex flex-column justify-content-center">
-                    <h2 class="display-1 fw-bold" data-aos="fade-left" style="letter-spacing: 2px;" data-aos-delay="200">
-                        Elnusa Puspita Pratama
-                    </h2>
-                    <p class="fs-5 mt-3" data-aos="fade-left" data-aos-delay="400">
-                        Your Trusted Construction Partner
-                    </p>
+
+                {{-- Visual Card --}}
+                <div class="hidden lg:block" data-aos="fade-left" data-aos-delay="200">
+                    <div class="relative p-1 rounded-[2.5rem] bg-gradient-to-br from-emerald-500/30 to-slate-900/10 backdrop-blur-2xl ring-1 ring-white/20">
+                        <div class="bg-slate-950/80 rounded-[2.3rem] overflow-hidden p-8 border border-white/5">
+                            <h2 class="text-3xl font-bold text-white mb-4">Elnusa Puspita Pratama</h2>
+                            <p class="text-slate-400 mb-8">Professional Construction & Engineering Excellence.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                                        <i class="bi bi-shield-check text-emerald-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold">Safety First</h4>
+                                        <p class="text-sm text-slate-500">Zero accidents, top tier protocols.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                                        <i class="bi bi-clock-history text-blue-400 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold">On-Time Delivery</h4>
+                                        <p class="text-sm text-slate-500">Reliable project management.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
-            <a href="#about-us" class="text-white text-decoration-none">
-                <i class="bi bi-chevron-down fs-1"></i>
+
+        {{-- Scroll Down --}}
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/30 hover:text-white transition-colors">
+                <i class="bi bi-chevron-down text-3xl"></i>
             </a>
         </div>
     </section>
 
-    
-    <section id="about-us" class="py-5 position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100"
-            style="background: linear-gradient(rgba(30, 20, 15, 0.75), rgba(30, 20, 15, 0.75)), 
-                    url('https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1920') center/cover no-repeat; 
-                    z-index: -1;">
-        </div>
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
+    {{-- About / Stats Section --}}
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-up">
+                    <h2 class="text-indigo-600 font-bold tracking-widest text-sm mb-4">WHO WE ARE</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+                        5 Years of Excellence in Modern Infrastructure
+                    </h3>
+                    <p class="text-lg text-slate-600 mb-8">
+                        We are more than just a contractor. We are a team of dedicated professionals 
+                        committed to bringing architectural visions to life with safety, precision, 
+                        and sustainable practices.
+                    </p>
                     
-                    @include('layout.sectionTitle', ['title' => 'ABOUT US'])
-                </div>
-            </div>
-            <div class="row justify-content-center align-items-center g-4">
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-                    
-                    <div class="p-5 rounded-4 shadow-lg bg-white bg-opacity-10 border border-warning border-opacity-25"
-                        data-aos="fade-in" 
-                        data-aos-duration="650"
-                        style="backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.25); 
-                              transition: backdrop-filter 0.5s ease-in-out, background-color 0.5s ease, box-shadow 0.5s ease;">
-                        <div class="d-flex align-items-center mb-4 flex-column flex-md-row">
-                            <div class="rounded-circle me-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center flex-shrink-0"
-                                style="width: 80px; height: 80px; background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,193,7,0.3); box-shadow: 0 4px 24px rgba(255,193,7,0.10);">
-                                <i class="bi bi-building fs-2 text-warning"></i>
-                            </div>
-                            <div>
-                                <h3 class="fw-bold mb-1 text-white">Elnusa Puspita Pratama</h3>
-                                <p class="text-white text-opacity-85 mb-0 fs-5">Professional Construction & Engineering Company
-                                </p>
-                            </div>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-4xl font-bold text-slate-900 mb-2">10+</div>
+                            <div class="text-sm text-slate-500 uppercase tracking-widest">Active Projects</div>
                         </div>
-                        <p class="text-white text-opacity-90 mb-3 fs-5">
-                            Kami adalah perusahaan konstruksi berpengalaman lebih dari 5 tahun, berkomitmen memberikan
-                            hasil terbaik untuk setiap proyek. Didukung tim profesional, kami siap mewujudkan visi Anda
-                            dengan inovasi, kualitas, dan integritas.
-                        </p>
-                        <div class="row g-4 mt-4">
-                            <div class="col">
-                                
-                                <div class="p-3 rounded text-center"
-                                    style="background: rgba(255, 255, 255, 0.15); 
-                                            backdrop-filter: blur(10px);
-                                            border: 1px solid rgba(255, 255, 255, 0.3);">
-                                    <h4 class="fw-bold text-white mb-1"
-                                        style="text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);">10</h4>
-                                    <small class="text-white text-opacity-85">Projects</small>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="p-3 rounded text-center"
-                                    style="background: rgba(255, 255, 255, 0.15); 
-                                            backdrop-filter: blur(10px);
-                                            border: 1px solid rgba(255, 255, 255, 0.3);">
-                                    <h4 class="fw-bold text-white mb-1"
-                                        style="text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);">5+</h4>
-                                    <small class="text-white text-opacity-85">Years</small>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="p-3 rounded text-center"
-                                    style="background: rgba(255, 255, 255, 0.15); 
-                                            backdrop-filter: blur(10px);
-                                            border: 1px solid rgba(255, 255, 255, 0.3);">
-                                    <h4 class="fw-bold text-white mb-1"
-                                        style="text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);">100%</h4>
-                                    <small class="text-white text-opacity-85">Client Satisfaction</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <a href="/project" class="btn btn-warning px-5 py-3 fw-bold shadow-sm">
-                                Explore Our Projects <i class="bi bi-arrow-right ms-2"></i>
-                            </a>
+                        <div>
+                            <div class="text-4xl font-bold text-slate-900 mb-2">100%</div>
+                            <div class="text-sm text-slate-500 uppercase tracking-widest">Success Rate</div>
                         </div>
                     </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800" 
+                         class="w-full h-64 object-cover rounded-3xl" alt="Construction detail">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800" 
+                         class="w-full h-64 object-cover rounded-3xl mt-8" alt="Engineer at work">
                 </div>
             </div>
         </div>

@@ -1,55 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title>@yield('title'){{ env('APP_NAME') }}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles & Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cardHover.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/projectCard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/reviewCard.css') }}">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+    </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    {{-- Conditionally show admin or public navigation --}}
+<body class="flex flex-col min-h-screen bg-slate-50 text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+    {{-- Navigation --}}
     @if(Request::is('admin*'))
-        @include('layout.adminNavigation')
+        {{-- Filament handles admin layout --}}
     @else
         @include('layout.navigation')
     @endif
 
-    <main class="flex-grow-1">
+    <main class="flex-grow">
         @yield('content')
     </main>
 
-    {{-- Only show footer on public pages --}}
+    {{-- Footer --}}
     @if(!Request::is('admin*'))
         @include('layout.footer')
     @endif
 
-    <!-- Bootstrap Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-PJsz6Ctp1JQ2ChJt2LbHYXHt2MIEl/T0ZJj3QA5NjY5Di6lXzDL2bBLxZqRMfT0W" crossorigin="anonymous">
-    </script>
-    
     <!-- AOS Animation -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
-    <!-- Custom JS Files -->
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/alerts.js') }}"></script>
-    <script src="{{ asset('js/carousel.js') }}"></script>
-    <script src="{{ asset('js/projects/create.js') }}"></script>
-    <script src="{{ asset('js/projects/edit.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                easing: 'ease-out-quad',
+            });
+        });
+    </script>
 </body>
 
 </html>

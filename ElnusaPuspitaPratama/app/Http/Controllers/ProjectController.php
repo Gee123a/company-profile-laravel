@@ -51,10 +51,25 @@ class ProjectController extends Controller
         return view('project', compact('allProjects', 'featuredProjects'));
     }
 
-    
-    public function show($id)
+    public function featured()
     {
-        $project = Project::with(['client', 'projectManager'])->findOrFail($id);
+        $featuredProjects = Project::with('client', 'projectManager')
+            ->orderBy('budget', 'desc')
+            ->take(6)
+            ->get();
+
+        return view('featured', compact('featuredProjects'));
+    }
+
+    
+    public function show($slug)
+    {
+        $searchTerm = str_replace('-', ' ', $slug);
+        
+        $project = Project::with(['client', 'projectManager'])
+            ->where('project_name', 'LIKE', $searchTerm)
+            ->orWhere('id', $slug)
+            ->firstOrFail();
 
         $status = strtolower($project->status);
         if ($status === 'planning') {

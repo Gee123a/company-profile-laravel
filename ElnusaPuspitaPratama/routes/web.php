@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Route;
 // Public routes (no auth required)
 Route::view('/','home')->name('home');
 Route::get('/project',[ProjectController::class, 'index'])->name('projects.index');
-Route::get('/project/{id}', [ProjectController::class, 'show'])->name('projects.show');
-Route::get('/team', [EmployeeController::class, 'index'])->name('team');
-Route::get('/clients', [ClientController::class, 'index'])->name('clients');
-Route::view('/contact', 'contact')->name('contact');
+Route::get('/featured', [ProjectController::class, 'featured'])->name('projects.featured');
+Route::get('/project/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 // Admin Routes (protected with auth middleware)
 Route::prefix('admin')->middleware(['auth'])->group(function () {

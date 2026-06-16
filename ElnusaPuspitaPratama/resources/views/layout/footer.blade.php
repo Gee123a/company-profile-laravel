@@ -1,99 +1,88 @@
-<footer class="bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <h3 class="fw-bold mb-3">
-                    <span class="text-warning">ELNUSA</span><br>
-                    Puspita Pratama
-                </h3>
-                <p class="text-white-50 mb-4">
-                    Your Trusted Construction Partner.<br>
-                    Building Dreams, Creating Reality.
+<footer class="bg-slate-950 text-white pt-24 pb-12 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            {{-- Company Info --}}
+            <div class="col-span-1 lg:col-span-1">
+                <a href="/" class="group flex items-center space-x-2 mb-6">
+                    <span class="text-2xl font-bold tracking-tight text-white">
+                        <span class="text-emerald-500 group-hover:text-emerald-400 transition-colors">ELNUSA</span><br>
+                        <span class="font-light">Puspita Pratama</span>
+                    </span>
+                </a>
+                <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                    Your trusted partner in infrastructure and engineering. 
+                    Building quality with integrity since 2018.
                 </p>
-                
-                
-            </div>
-
-            
-            <div class="col-lg-4 col-md-6">
-                <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
-                <div class="row">
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <a href="/"
-                                    class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                                    <i class="bi bi-chevron-right me-1"></i> Home
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/project"
-                                    class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                                    <i class="bi bi-chevron-right me-1"></i> Projects
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/team"
-                                    class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                                    <i class="bi bi-chevron-right me-1"></i> Our Team
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <a href="/clients"
-                                    class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                                    <i class="bi bi-chevron-right me-1"></i> Our Clients
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="/contact"
-                                    class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                                    <i class="bi bi-chevron-right me-1"></i> Contact
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-slate-950 transition-all">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-slate-950 transition-all">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-slate-950 transition-all">
+                        <i class="bi bi-envelope-fill"></i>
+                    </a>
                 </div>
             </div>
 
-            
-            <div class="col-lg-4 col-md-12">
-                <h5 class="fw-bold mb-3 text-warning">
-                    <i class="bi bi-geo-alt-fill me-2"></i>Find Us
-                </h5>
-                <p class="text-white-50 mb-2">
-                    <strong>Head Office:</strong><br>
-                    Jalan Manyar Kertoadi no 93
-                </p>
-                <p class="text-white-50 mb-3">
-                    <i class="bi bi-telephone-fill text-warning me-2"></i>
-                    <a href="tel:+622187654321" class="text-white-50 text-decoration-none">
-                        +62 88 1181 2904
-                    </a>
-                </p>
-                <a href="/contact" class="btn btn-warning btn-sm">
-                    <i class="bi bi-arrow-right-circle me-2"></i>Get Directions
-                </a>
+            {{-- Quick Links --}}
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wider uppercase text-xs">Quick Navigation</h4>
+                <ul class="space-y-4">
+                    @foreach(['/' => 'Home', '/project' => 'Projects', '/contact' => 'Contact'] as $url => $label)
+                        <li>
+                            <a href="{{ $url }}" class="text-slate-400 hover:text-emerald-400 transition-colors text-sm flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/40 mr-3"></span>
+                                {{ $label }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            {{-- Services --}}
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wider uppercase text-xs">Expertise</h4>
+                <ul class="space-y-4 text-slate-400 text-sm">
+                    <li class="flex items-start">
+                        <i class="bi bi-check2 text-emerald-500 mr-2"></i>
+                        General Contracting
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-check2 text-emerald-500 mr-2"></i>
+                        Structural Engineering
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-check2 text-emerald-500 mr-2"></i>
+                        HVAC & MEP Systems
+                    </li>
+                    <li class="flex items-start">
+                        <i class="bi bi-check2 text-emerald-500 mr-2"></i>
+                        Interior Solutions
+                    </li>
+                </ul>
+            </div>
+
+            {{-- Contact --}}
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wider uppercase text-xs">Office</h4>
+                <div class="space-y-6 text-sm text-slate-400">
+                    <div class="flex items-start space-x-3">
+                        <i class="bi bi-geo-alt-fill text-emerald-500 text-lg"></i>
+                        <span>Jalan Manyar Kertoadi no 93,<br>Surabaya, Indonesia</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="bi bi-telephone-fill text-emerald-500 text-lg"></i>
+                        <a href="tel:+628811812904" class="hover:text-white transition-colors">+62 88 1181 2904</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <hr class="my-4 border-secondary opacity-25">
-
-        
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <p class="text-white-50 small mb-0">
-                    &copy; {{ date('Y') }} <span class="text-warning fw-bold">Elnusa Puspita Pratama</span>
-                </p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="text-white-50 small mb-0">
-                    Designed with <i class="bi bi-heart-fill text-danger"></i> for Excellence
-                </p>
-            </div>
+        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs tracking-widest uppercase">
+            <p>&copy; {{ date('Y') }} Elnusa Puspita Pratama. All rights reserved.</p>
+            <p class="mt-4 md:mt-0">Refined for Excellence</p>
         </div>
     </div>
 </footer>
