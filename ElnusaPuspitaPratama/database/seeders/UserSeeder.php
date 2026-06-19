@@ -14,14 +14,12 @@ class UserSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin Elnusa',
             'email' => 'admin@elnusa.com',
-            'role' => 'admin',
         ]);
 
         // Manager user - can manage everything (projects, reviews, employees)
         User::factory()->create([
             'name' => 'Manager Elnusa',
             'email' => 'manager@elnusa.com',
-            'role' => 'manager',
         ]);
     }
 }

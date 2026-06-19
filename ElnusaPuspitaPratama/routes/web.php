@@ -7,13 +7,35 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes (no auth required)
-Route::view('/','home')->name('home');
+Route::get('/', function () {
+    $featuredProjects = \App\Models\Project::with('client', 'projectManager')
+        ->orderBy('budget', 'desc')
+        ->take(3)
+        ->get();
+    $reviews = \App\Models\Review::orderBy('created_at', 'desc')->take(6)->get();
+    return view('home', compact('featuredProjects', 'reviews'));
+})->name('home');
+
 Route::get('/project',[ProjectController::class, 'index'])->name('projects.index');
 Route::get('/featured', [ProjectController::class, 'featured'])->name('projects.featured');
 Route::get('/project/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
+
+    \App\Models\Inquiry::create($validated);
+
+    return back()->with('success', 'Thank you! Your message has been received. Our team will contact you shortly.');
+});
 
 // Admin Routes (protected with auth middleware)
 Route::prefix('admin')->middleware(['auth'])->group(function () {

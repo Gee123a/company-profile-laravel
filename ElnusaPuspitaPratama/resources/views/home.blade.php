@@ -112,6 +112,69 @@
                 </div>
             </div>
         </div>
+    {{-- Featured Projects Section --}}
+    @if(isset($featuredProjects) && $featuredProjects->isNotEmpty())
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-emerald-600 font-bold tracking-widest text-sm mb-4 uppercase">Portfolio</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h3>
+                <p class="text-slate-500 max-w-xl mx-auto">Explore some of our largest and most complex construction and engineering achievements.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($featuredProjects as $project)
+                    @include('card.projectCard', ['project' => $project])
+                @endforeach
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="/project" class="inline-flex items-center space-x-2 rounded-full bg-emerald-500 px-8 py-4 text-sm font-bold text-slate-950 hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/10">
+                    <span>VIEW ALL PROJECTS</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
     </section>
+    @endif
+
+    {{-- Client Testimonials Section --}}
+    @if(isset($reviews) && $reviews->isNotEmpty())
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1541976590-713941681591?w=1920" class="w-full h-full object-cover" alt="Background">
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-emerald-400 font-bold tracking-widest text-sm mb-4 uppercase">Testimonials</h2>
+                <h3 class="text-4xl font-bold text-white mb-4">What Our Clients Say</h3>
+                <p class="text-slate-400 max-w-xl mx-auto">We build relationships based on transparency, consistency, and professional execution.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($reviews as $review)
+                    <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between" data-aos="fade-up">
+                        <div>
+                            <div class="text-emerald-400 text-3xl mb-4">“</div>
+                            <p class="text-slate-300 italic mb-8 leading-relaxed">
+                                {{ $review->deskripsi }}
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-4 border-t border-white/10 pt-6">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold uppercase">
+                                {{ substr($review->nama_client, 0, 1) }}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">{{ $review->nama_client }}</h4>
+                                <p class="text-xs text-slate-400">{{ $review->jabatan }}, {{ $review->perusahaan }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
 
 @endsection
