@@ -4,6 +4,11 @@
 $_SERVER['VERCEL'] = '1';
 $_ENV['VERCEL'] = '1';
 
+// Vercel terminates SSL at the edge — force HTTPS so Laravel generates correct URLs
+$_SERVER['HTTPS'] = 'on';
+$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
+$_SERVER['SERVER_PORT'] = 443;
+
 // Pre-create all writable dirs in /tmp before Laravel boots
 $dirs = [
     '/tmp/storage',
