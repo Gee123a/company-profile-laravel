@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "vercel-build": "composer install --no-dev --working-dir=ElnusaPuspitaPratama && cd ElnusaPuspitaPratama && npm install && npm run build"
+    "vercel-build": "cd ElnusaPuspitaPratama && npm install && npm run build"
   }
 }
