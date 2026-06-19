@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(css|js|images|image|build|favicon.ico|robots.txt)(.*)",
+      "dest": "/ElnusaPuspitaPratama/public/$1$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
