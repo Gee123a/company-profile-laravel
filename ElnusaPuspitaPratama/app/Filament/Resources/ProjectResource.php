@@ -67,7 +67,7 @@ class ProjectResource extends Resource
                             ->multiple()
                             ->reorderable()
                             ->appendFiles()
-                            ->disk('cloudinary')
+                            ->disk('public')
                             ->directory('projects'),
                         Forms\Components\Textarea::make('description')
                             ->columnSpanFull(),

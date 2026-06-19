@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Employee;
 use App\Models\Client;
 use App\Models\Review; // Add this line
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -83,9 +84,7 @@ class AdminController extends Controller
                     ->withErrors(['image' => 'Image file is too large. Maximum size is 5MB.']);
             }
             
-            $imageName = time() . '_' . str_replace(' ', '_', $request->project_name) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/projects'), $imageName);
-            $validated['image_url'] = 'images/projects/' . $imageName;
+            $validated['image_url'] = ImageService::convertToWebp($image, 'images/projects', $request->project_name);
         }
 
         unset($validated['image']);
@@ -138,9 +137,7 @@ class AdminController extends Controller
                 unlink(public_path($project->image_url));
             }
 
-            $imageName = time() . '_' . str_replace(' ', '_', $request->project_name) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/projects'), $imageName);
-            $validated['image_url'] = 'images/projects/' . $imageName;
+            $validated['image_url'] = ImageService::convertToWebp($image, 'images/projects', $request->project_name);
         }
 
         unset($validated['image']);
