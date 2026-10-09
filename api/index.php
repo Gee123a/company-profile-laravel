@@ -40,6 +40,21 @@ foreach ($dirs as $dir) {
     }
 }
 
+
+if ($_SERVER['REQUEST_URI'] === '/php-info') {
+    phpinfo();
+    exit;
+}
+if ($_SERVER['REQUEST_URI'] === '/test-error') {
+    try {
+        \Illuminate\Support\Facades\DB::connection()->getPdo();
+        echo 'DB SUCCESS';
+    } catch (\Throwable $e) {
+        echo 'DB ERROR: ' . $e->getMessage();
+    }
+    exit;
+}
+
 try {
     // Forward Vercel requests to the Laravel entrypoint in the subdirectory
     require __DIR__ . '/../ElnusaPuspitaPratama/public/index.php';
