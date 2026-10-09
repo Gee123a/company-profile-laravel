@@ -8,9 +8,6 @@ $_ENV['VERCEL'] = '1';
 $_SERVER['HTTPS'] = 'on';
 $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 $_SERVER['SERVER_PORT'] = 443;
-$_SERVER['APP_DEBUG'] = 'true';
-$_ENV['APP_DEBUG'] = 'true';
-putenv('APP_DEBUG=true');
 
 // Configure writable cache paths for serverless
 putenv('APP_CONFIG_CACHE=/tmp/config.php');
@@ -41,19 +38,6 @@ foreach ($dirs as $dir) {
 }
 
 
-if ($_SERVER['REQUEST_URI'] === '/php-info') {
-    phpinfo();
-    exit;
-}
-if ($_SERVER['REQUEST_URI'] === '/test-error') {
-    try {
-        \Illuminate\Support\Facades\DB::connection()->getPdo();
-        echo 'DB SUCCESS';
-    } catch (\Throwable $e) {
-        echo 'DB ERROR: ' . $e->getMessage();
-    }
-    exit;
-}
 
 try {
     // Forward Vercel requests to the Laravel entrypoint in the subdirectory
