@@ -8,6 +8,9 @@ $_ENV['VERCEL'] = '1';
 $_SERVER['HTTPS'] = 'on';
 $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 $_SERVER['SERVER_PORT'] = 443;
+$_SERVER['APP_DEBUG'] = 'true';
+$_ENV['APP_DEBUG'] = 'true';
+putenv('APP_DEBUG=true');
 
 // Configure writable cache paths for serverless
 putenv('APP_CONFIG_CACHE=/tmp/config.php');
