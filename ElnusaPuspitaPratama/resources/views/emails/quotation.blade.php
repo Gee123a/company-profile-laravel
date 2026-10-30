@@ -1,205 +1,241 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Quotation - PT Elnusa Puspita Pratama</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f1f5f9;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #0f172a;
-        }
-        .container {
-            max-width: 640px;
-            margin: 30px auto;
-            background: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
-        }
-        .header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 36px 32px;
-            color: #ffffff;
-            text-align: center;
-        }
-        .header .badge {
-            display: inline-block;
-            background: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: -0.5px;
-        }
-        .header p {
-            margin: 8px 0 0;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        .content {
-            padding: 32px;
-        }
-        .greeting {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        .quotation-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
-        }
-        .quotation-id {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed #cbd5e1;
-            display: flex;
-            justify-content: space-between;
-        }
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 14px;
-        }
-        .data-row:last-child {
-            border-bottom: none;
-        }
-        .data-label {
-            color: #64748b;
-            font-weight: 500;
-        }
-        .data-value {
-            font-weight: 700;
-            color: #0f172a;
-            text-align: right;
-        }
-        .highlight-badge {
-            background: #ecfdf5;
-            color: #047857;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        .notes-box {
-            background: #f1f5f9;
-            border-left: 4px solid #10b981;
-            padding: 14px 18px;
-            border-radius: 0 8px 8px 0;
-            font-size: 13px;
-            color: #334155;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        .footer {
-            background: #0f172a;
-            padding: 24px 32px;
-            text-align: center;
-            color: #64748b;
-            font-size: 12px;
-            line-height: 1.6;
-        }
-        .footer a {
-            color: #10b981;
-            text-decoration: none;
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Engineering Quotation - PT Elnusa Puspita Pratama</title>
+    <style type="text/css">
+        /* Client-specific resets */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f4f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #1e293b; }
+
+        /* Typography & Utility */
+        .mono { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .spec-label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+        .spec-value { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.4; }
+
+        @media only screen and (max-width: 640px) {
+            .mobile-full { width: 100% !important; max-width: 100% !important; }
+            .mobile-p-20 { padding: 24px 20px !important; }
+            .mobile-stack { display: block !important; width: 100% !important; }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        {{-- Header --}}
-        <div class="header">
-            <span class="badge">Official Engineering Quotation</span>
-            <h1>PT Elnusa Puspita Pratama</h1>
-            <p>General Contractor, Civil Engineering & Project Management</p>
-        </div>
+<body style="margin: 0; padding: 0; background-color: #f4f6f8;">
 
-        {{-- Main Body --}}
-        <div class="content">
-            <p class="greeting">
-                Yth. Bpk/Ibu <strong>{{ $inquiry->name }}</strong>,<br>
-                Terima kasih telah menghubungi <strong>PT Elnusa Puspita Pratama</strong>. Berikut kami lampirkan rincian estimasi quotation awal berdasarkan kebutuhan spesifikasi proyek yang Anda ajukan:
-            </p>
+    {{-- Wrapper Container --}}
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f8; table-layout: fixed;">
+        <tr>
+            <td align="center" style="padding: 40px 16px 50px 16px;">
 
-            {{-- 3 Data Points Card --}}
-            <div class="quotation-card">
-                <div class="quotation-id">
-                    <span><strong>REF:</strong> QUO-{{ str_pad($inquiry->id, 5, '0', STR_PAD_LEFT) }}</span>
-                    <span><strong>TANGGAL:</strong> {{ $inquiry->created_at ? $inquiry->created_at->format('d M Y, H:i') : date('d M Y, H:i') }} WIB</span>
-                </div>
+                {{-- Main Document Card --}}
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 640px; background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);" class="mobile-full">
 
-                <div class="data-row">
-                    <span class="data-label">Nama Klien / Instansi</span>
-                    <span class="data-value">{{ $inquiry->name }}</span>
-                </div>
+                    {{-- Top Brand Accent Bar --}}
+                    <tr>
+                        <td height="4" style="background: linear-gradient(90deg, #059669 0%, #10b981 50%, #0284c7 100%); line-height: 4px; font-size: 4px;">&nbsp;</td>
+                    </tr>
 
-                <div class="data-row">
-                    <span class="data-label">Email Pemohon</span>
-                    <span class="data-value">{{ $inquiry->email }}</span>
-                </div>
+                    {{-- Masthead Header --}}
+                    <tr>
+                        <td style="background-color: #0f172a; padding: 36px 36px 32px 36px;" class="mobile-p-20">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td>
+                                        <div style="font-size: 10px; font-weight: 800; color: #10b981; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">
+                                            Departemen Engineering & Estimasi Biaya
+                                        </div>
+                                        <h1 style="margin: 0; font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; line-height: 1.2;">
+                                            PT ELNUSA PUSPITA PRATAMA
+                                        </h1>
+                                        <p style="margin: 6px 0 0 0; font-size: 12px; color: #94a3b8; font-weight: 400; line-height: 1.5;">
+                                            General Contractor &bull; Civil Construction &bull; MEP Engineering
+                                        </p>
+                                    </td>
+                                    <td align="right" valign="top" style="width: 140px;">
+                                        <div style="background-color: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px 12px; text-align: right;">
+                                            <div class="mono" style="font-size: 9px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">Dokumen Resmi</div>
+                                            <div class="mono" style="font-size: 12px; font-weight: 700; color: #38bdf8; margin-top: 2px;">
+                                                QUO-{{ str_pad($inquiry->id, 5, '0', STR_PAD_LEFT) }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
 
-                {{-- DATA 1: Layanan --}}
-                <div class="data-row">
-                    <span class="data-label">1. Kebutuhan Layanan (Service)</span>
-                    <span class="data-value highlight-badge">{{ $inquiry->service_type ?? 'Konstruksi Bangunan Sipil' }}</span>
-                </div>
+                    {{-- Document Meta Strip --}}
+                    <tr>
+                        <td style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 14px 36px;" class="mobile-p-20">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="font-size: 12px; color: #64748b;">
+                                        <strong>Tanggal Pengajuan:</strong> {{ $inquiry->created_at ? $inquiry->created_at->format('d F Y, H:i') : date('d F Y, H:i') }} WIB
+                                    </td>
+                                    <td align="right" style="font-size: 12px; color: #059669; font-weight: 700;">
+                                        &bull; Status: Estimasi Awal
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
 
-                {{-- DATA 2: Skala Proyek / Anggaran --}}
-                <div class="data-row">
-                    <span class="data-label">2. Skala & Estimasi Anggaran</span>
-                    <span class="data-value">{{ $inquiry->project_scale ?? 'Skala Menengah (Rp 500 Juta - Rp 2 Miliar)' }}</span>
-                </div>
+                    {{-- Body Content --}}
+                    <tr>
+                        <td style="padding: 36px;" class="mobile-p-20">
 
-                {{-- DATA 3: Durasi Pengerjaan / Scope --}}
-                <div class="data-row">
-                    <span class="data-label">3. Target Timeline Pengerjaan</span>
-                    <span class="data-value">{{ $inquiry->timeline ?? 'Standar (3 - 6 Bulan)' }}</span>
-                </div>
-            </div>
+                            {{-- Salutation --}}
+                            <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #334155;">
+                                Kepada Yth. Bpk/Ibu <strong style="color: #0f172a;">{{ $inquiry->name }}</strong>,
+                            </p>
+                            <p style="margin: 0 0 28px 0; font-size: 14px; line-height: 1.6; color: #475569;">
+                                Terima kasih atas kepercayaan Anda kepada PT Elnusa Puspita Pratama. Berdasarkan rincian kebutuhan teknis yang Anda ajukan melalui portal web resmi kami, berikut adalah ikhtisar spesifikasi dokumen penawaran awal:
+                            </p>
 
-            {{-- Message / Requirement Notes --}}
-            <div style="font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 8px; text-transform: uppercase;">
-                Catatan Kebutuhan Proyek:
-            </div>
-            <div class="notes-box">
-                "{{ $inquiry->message }}"
-            </div>
+                            {{-- Table: 3 Data Points Specifications --}}
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin-bottom: 28px;">
+                                <tr style="background-color: #f1f5f9;">
+                                    <th align="left" style="padding: 12px 18px; font-size: 11px; font-weight: 800; color: #334155; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid #cbd5e1; width: 35%;">Parameter Kebutuhan</th>
+                                    <th align="left" style="padding: 12px 18px; font-size: 11px; font-weight: 800; color: #334155; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid #cbd5e1;">Spesifikasi Proyek (3 Data Kebutuhan)</th>
+                                </tr>
 
-            <p style="font-size: 13px; color: #64748b; line-height: 1.6;">
-                Tim Engineering & Project Estimation kami sedang meninjau dokumen teknis dan akan menghubungi Anda untuk pembahasan Rencana Anggaran Biaya (RAB) definitif. Apabila ada pertanyaan lebih lanjut, Anda dapat langsung membalas (reply) email ini.
-            </p>
-        </div>
+                                {{-- DATA 1: Layanan --}}
+                                <tr>
+                                    <td style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background-color: #ffffff; vertical-align: top;">
+                                        <div class="spec-label">1. Kategori Layanan</div>
+                                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Service Scope</div>
+                                    </td>
+                                    <td style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background-color: #ffffff; vertical-align: top;">
+                                        <span style="display: inline-block; background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 6px;">
+                                            {{ $inquiry->service_type ?? 'Konstruksi Bangunan Sipil & Komersial' }}
+                                        </span>
+                                    </td>
+                                </tr>
 
-        {{-- Footer --}}
-        <div class="footer">
-            <strong>PT Elnusa Puspita Pratama</strong><br>
-            Jalan Manyar Kertoadi No. 93, Surabaya, Jawa Timur, Indonesia<br>
-            Telepon: +62 88 1181 2904 &bull; Email: <a href="mailto:ivan@uccca.site">ivan@uccca.site</a><br>
-            <span style="font-size: 11px; color: #475569; display: block; margin-top: 8px;">
-                Terkirim otomatis melalui Cloud Mail Server Purelymail (uccca.site) untuk pemenuhan tugas Cloud Computing.
-            </span>
-        </div>
-    </div>
+                                {{-- DATA 2: Skala Proyek & Anggaran --}}
+                                <tr>
+                                    <td style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background-color: #f8fafc; vertical-align: top;">
+                                        <div class="spec-label">2. Skala & Anggaran</div>
+                                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Budget Estimation</div>
+                                    </td>
+                                    <td style="padding: 14px 18px; border-bottom: 1px solid #e2e8f0; background-color: #f8fafc; vertical-align: top;">
+                                        <div class="spec-value" style="color: #0f172a;">
+                                            {{ $inquiry->project_scale ?? 'Skala Menengah (Rp 500 Juta - Rp 2 Miliar)' }}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                {{-- DATA 3: Target Timeline Pengerjaan --}}
+                                <tr>
+                                    <td style="padding: 14px 18px; background-color: #ffffff; vertical-align: top;">
+                                        <div class="spec-label">3. Target Timeline</div>
+                                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Duration Window</div>
+                                    </td>
+                                    <td style="padding: 14px 18px; background-color: #ffffff; vertical-align: top;">
+                                        <div class="spec-value" style="color: #0369a1;">
+                                            {{ $inquiry->timeline ?? 'Standar Operasional (3 - 6 Bulan)' }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            {{-- Project Description Box --}}
+                            <div style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">
+                                Catatan Spesifikasi dari Klien:
+                            </div>
+                            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #059669; border-radius: 0 8px 8px 0; padding: 16px 20px; font-size: 13px; color: #334155; line-height: 1.6; margin-bottom: 30px;">
+                                "{{ $inquiry->message }}"
+                            </div>
+
+                            {{-- Next Steps Pipeline --}}
+                            <div style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;">
+                                Tahapan Selanjutnya (Engineering Workflow):
+                            </div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 28px;">
+                                <tr>
+                                    <td style="padding: 10px 0; border-bottom: 1px dashed #e2e8f0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top" style="width: 26px;">
+                                                    <div style="width: 20px; height: 20px; background-color: #0f172a; color: #ffffff; border-radius: 50%; text-align: center; font-size: 11px; font-weight: 700; line-height: 20px;">1</div>
+                                                </td>
+                                                <td style="font-size: 13px; color: #334155; line-height: 1.5;">
+                                                    <strong>Kajian Dokumen Teknis:</strong> Tim estimator menghitung volume material, peralatan, dan tenaga ahli.
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 0; border-bottom: 1px dashed #e2e8f0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top" style="width: 26px;">
+                                                    <div style="width: 20px; height: 20px; background-color: #0f172a; color: #ffffff; border-radius: 50%; text-align: center; font-size: 11px; font-weight: 700; line-height: 20px;">2</div>
+                                                </td>
+                                                <td style="font-size: 13px; color: #334155; line-height: 1.5;">
+                                                    <strong>Koordinasi & Site Survey:</strong> Penjadwalan verifikasi kontur tanah dan akses logistik ke lokasi.
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td valign="top" style="width: 26px;">
+                                                    <div style="width: 20px; height: 20px; background-color: #059669; color: #ffffff; border-radius: 50%; text-align: center; font-size: 11px; font-weight: 700; line-height: 20px;">3</div>
+                                                </td>
+                                                <td style="font-size: 13px; color: #334155; line-height: 1.5;">
+                                                    <strong>Penerbitan RAB Definitif:</strong> Penyerahan dokumen kontrak kerja sama dan kurva S pengerjaan proyek.
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            {{-- Notice box --}}
+                            <div style="background-color: #f1f5f9; border-radius: 8px; padding: 14px 18px; font-size: 12px; color: #64748b; line-height: 1.5;">
+                                Apabila Anda memerlukan penyesuaian spesifikasi atau konsultasi mendesak, silakan langsung membalas (reply) email ini.
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    {{-- Footer --}}
+                    <tr>
+                        <td style="background-color: #0f172a; padding: 28px 36px; border-top: 1px solid #1e293b;" class="mobile-p-20">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="color: #94a3b8; font-size: 12px; line-height: 1.6;">
+                                        <strong style="color: #ffffff;">PT Elnusa Puspita Pratama</strong><br />
+                                        Jalan Manyar Kertoadi No. 93, Surabaya, Jawa Timur, Indonesia<br />
+                                        Kontak: <a href="mailto:ivan@uccca.site" style="color: #38bdf8; text-decoration: none;">ivan@uccca.site</a> &bull; Web: <a href="https://epp.uccca.site" style="color: #38bdf8; text-decoration: none;">epp.uccca.site</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 16px; border-top: 1px solid #1e293b; margin-top: 16px;">
+                                        <div class="mono" style="font-size: 10px; color: #64748b; line-height: 1.4;">
+                                            Sistem Email Otomatis Komputasi Awan (Purelymail SMTP &bull; Domain uccca.site) &bull; Cloud Computing Project
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+                {{-- End Document Card --}}
+
+            </td>
+        </tr>
+    </table>
+
 </body>
 </html>
