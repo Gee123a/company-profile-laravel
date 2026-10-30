@@ -35,7 +35,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact') }}" method="POST" class="space-y-6">
+                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                         @csrf
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -47,20 +47,65 @@
                                 <input type="email" name="email" required class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="john@example.com">
                             </div>
                         </div>
+
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Subject</label>
                             <select name="subject" required class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all">
-                                <option>New Project Inquiry</option>
-                                <option>General Consultation</option>
-                                <option>Request Quote</option>
+                                <option value="Request Quotation">Request Quotation & Engineering Estimate</option>
+                                <option value="New Project Inquiry">New Project Inquiry</option>
+                                <option value="General Consultation">General Consultation</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Your Message</label>
-                            <textarea name="message" required rows="6" class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="Tell us about your project..."></textarea>
+
+                        {{-- 3 Data Inputs for Quotation Specification --}}
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 space-y-5">
+                            <div class="flex items-center space-x-2 pb-2 border-b border-slate-200">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Spesifikasi Kebutuhan Quotation (3 Data Kebutuhan)</h3>
+                            </div>
+
+                            {{-- Data 1: Jenis Layanan --}}
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">1. Jenis Layanan (Service Type)</label>
+                                <select name="service_type" required class="w-full rounded-xl border-slate-200 bg-white px-4 py-3 text-sm focus:border-emerald-500 focus:ring-emerald-500 transition-all">
+                                    <option value="Konstruksi Bangunan Sipil & Komersial">Konstruksi Bangunan Sipil & Komersial</option>
+                                    <option value="Mechanical, Electrical & Plumbing (MEP)">Mechanical, Electrical & Plumbing (MEP)</option>
+                                    <option value="Perencanaan Desain Arsitektur & Interior">Perencanaan Desain Arsitektur & Interior</option>
+                                    <option value="Renovasi & Rekayasa Struktur">Renovasi & Rekayasa Struktur</option>
+                                </select>
+                            </div>
+
+                            {{-- Data 2: Skala Proyek / Anggaran --}}
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">2. Skala & Estimasi Anggaran (Project Scale & Budget)</label>
+                                <select name="project_scale" required class="w-full rounded-xl border-slate-200 bg-white px-4 py-3 text-sm focus:border-emerald-500 focus:ring-emerald-500 transition-all">
+                                    <option value="Skala Menengah (Rp 500 Juta - Rp 2 Miliar)">Skala Menengah (Rp 500 Juta - Rp 2 Miliar)</option>
+                                    <option value="Skala Kecil (< Rp 500 Juta)">Skala Kecil (< Rp 500 Juta)</option>
+                                    <option value="Skala Besar / Enterprise (> Rp 2 Miliar)">Skala Besar / Enterprise (> Rp 2 Miliar)</option>
+                                    <option value="Konsultasi Kelayakan / Custom">Konsultasi Kelayakan / Custom</option>
+                                </select>
+                            </div>
+
+                            {{-- Data 3: Target Timeline Pengerjaan --}}
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">3. Target Timeline Pengerjaan</label>
+                                <select name="timeline" required class="w-full rounded-xl border-slate-200 bg-white px-4 py-3 text-sm focus:border-emerald-500 focus:ring-emerald-500 transition-all">
+                                    <option value="Standar Operasional (3 - 6 Bulan)">Standar Operasional (3 - 6 Bulan)</option>
+                                    <option value="Segera / Fast Track (1 - 3 Bulan)">Segera / Fast Track (1 - 3 Bulan)</option>
+                                    <option value="Proyek Multi-Tahap (> 6 Bulan)">Proyek Multi-Tahap (> 6 Bulan)</option>
+                                    <option value="Fleksibel / Sesuai Rekomendasi">Fleksibel / Sesuai Rekomendasi</option>
+                                </select>
+                            </div>
                         </div>
-                        <button type="submit" class="w-full bg-emerald-500 text-slate-950 font-bold py-5 rounded-2xl hover:bg-emerald-400 transition-all shadow-xl shadow-emerald-500/20">
-                            SEND MESSAGE
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Deskripsi Kebutuhan Tambahan (Your Message)</label>
+                            <textarea name="message" required rows="4" class="w-full rounded-2xl border-slate-200 bg-slate-50 px-4 py-4 focus:border-emerald-500 focus:ring-emerald-500 transition-all" placeholder="Ceritakan detail spesifikasi atau lokasi proyek..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-500 text-slate-950 font-bold py-5 rounded-2xl hover:bg-emerald-400 transition-all shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-2">
+                            <span>KIRIM PERMINTAAN & DAPATKAN QUOTATION</span>
+                            <i class="bi bi-send-fill text-sm"></i>
                         </button>
                     </form>
                 </div>
@@ -92,7 +137,7 @@
                             <div class="p-8 rounded-3xl bg-indigo-50 border border-indigo-100">
                                 <i class="bi bi-envelope-fill text-2xl text-indigo-600 mb-4 block"></i>
                                 <h4 class="font-bold text-slate-900 mb-1">Email Us</h4>
-                                <a href="mailto:hrd.elnusaapp@gmail.com" class="text-indigo-600 font-semibold hover:underline">hrd.elnusaapp@gmail.com</a>
+                                <a href="mailto:ivan@uccca.site" class="text-indigo-600 font-semibold hover:underline">ivan@uccca.site</a>
                             </div>
                         </div>
 

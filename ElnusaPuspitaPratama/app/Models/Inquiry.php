@@ -13,6 +13,9 @@ class Inquiry extends Model
         'name',
         'email',
         'subject',
+        'service_type',
+        'project_scale',
+        'timeline',
         'message',
     ];
 }

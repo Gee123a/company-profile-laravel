@@ -33,6 +33,15 @@ class InquiryResource extends Resource
                 Forms\Components\TextInput::make('subject')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('service_type')
+                    ->label('Jenis Layanan')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('project_scale')
+                    ->label('Skala & Estimasi Anggaran')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('timeline')
+                    ->label('Target Timeline')
+                    ->maxLength(255),
                 Forms\Components\Textarea::make('message')
                     ->required()
                     ->columnSpanFull(),
@@ -48,6 +57,15 @@ class InquiryResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subject')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('service_type')
+                    ->label('Layanan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('project_scale')
+                    ->label('Skala Anggaran')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('timeline')
+                    ->label('Timeline')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
