@@ -112,21 +112,6 @@
             line-height: 1.6;
             margin-bottom: 24px;
         }
-        .cta-box {
-            text-align: center;
-            padding: 24px 0 12px;
-        }
-        .btn {
-            display: inline-block;
-            background: #10b981;
-            color: #042f2e;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
-        }
         .footer {
             background: #0f172a;
             padding: 24px 32px;
@@ -202,14 +187,8 @@
             </div>
 
             <p style="font-size: 13px; color: #64748b; line-height: 1.6;">
-                Tim Engineering & Project Estimation kami sedang meninjau dokumen teknis dan akan menghubungi Anda dalam kurun waktu 1x24 jam kerja untuk penjadwalan survey lokasi serta pembahasan Rencana Anggaran Biaya (RAB) definitif.
+                Tim Engineering & Project Estimation kami sedang meninjau dokumen teknis dan akan menghubungi Anda untuk pembahasan Rencana Anggaran Biaya (RAB) definitif. Apabila ada pertanyaan lebih lanjut, Anda dapat langsung membalas (reply) email ini.
             </p>
-
-            <div class="cta-box">
-                <a href="https://wa.me/628811812904?text={{ urlencode('Halo PT Elnusa Puspita Pratama, saya ingin konsultasi mengenai Quotation Ref: QUO-' . str_pad($inquiry->id, 5, '0', STR_PAD_LEFT)) }}" class="btn">
-                    Hubungi Tim Engineering (WhatsApp)
-                </a>
-            </div>
         </div>
 
         {{-- Footer --}}
