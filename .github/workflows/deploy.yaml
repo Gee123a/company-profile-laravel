@@ -6,24 +6,43 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Build Vite Assets
         working-directory: ElnusaPuspitaPratama
         run: |
           npm ci
           npm run build
+
+      - name: Commit & Push Built Assets to GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ElnusaPuspitaPratama/public/build
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(build): update compiled Vite assets in /public/build [skip ci]"
+            git push origin main
+          else
+            echo "No changes in /public/build to commit."
+          fi
 
       - name: Deploy Built Assets via SCP
         uses: appleboy/scp-action@v0.1.7
@@ -49,8 +68,9 @@ jobs:
             # Enable maintenance mode
             php artisan down || true
 
-            # Pull latest commits
-            git pull origin main
+            # Sync latest commits (including pushed /public/build) cleanly
+            git fetch origin main
+            git reset --hard origin/main
 
             # Install composer dependencies
             composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
@@ -58,9 +78,10 @@ jobs:
             # Run migrations
             php artisan migrate --force
 
-            # Optimize cache for Laravel 12
+            # Optimize cache safely for TiDB SSL (avoid config:cache PDO constant serialization bug)
             php artisan optimize:clear
-            php artisan optimize
+            php artisan route:cache
+            php artisan view:cache
 
             # Disable maintenance mode
             php artisan up
